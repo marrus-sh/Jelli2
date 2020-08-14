@@ -1,21 +1,47 @@
 <!dOcTyPe HTML>
 <HTML Lang=en>
 <TITLE>Jelli Demo</TITLE>
+<LINK Rel=icon HRef=Images/icon.png>
 <STYLE>
 main{ Display: Grid; Margin: Auto; Max-Width: Max-Content; Grid-Template-Rows: Max-Content Auto Auto Max-Content; Grid-Template-Columns: Max-Content Auto Max-Content; Gap: 1EM }
 main>input{ Display: None }
 main>label{ Grid-Row: 1 / Span 1; Grid-Column: 1 / Span 3; Text-Align: Center }
-#controls+label::after{ Content: " 🙅" }
-#controls:Checked+label::after{ Content: " 🙆" }
+#controls+label::before{ Display: Inline-Block; Margin-Inline-End: .5EM; Block-Size: 1EM; Inline-Size: 1EM;  Background: -400% -100% / 600% URL(Images/ctrl.png); Image-Rendering: OptimizeSpeed; Content: " " }
+#controls:Active+label::before{ Background-Position: -400% -400% }
+#controls:Checked+label::before{ Background-Position: -500% -100% }
+#controls:Checked:Active+label::before{ Background-Position: -500% -400% }
 .CONTROL{ Display: Grid; Margin: Auto; Block-Size: Max-Content; Inline-Size: Max-Content; Grid-Template-Rows: 1FR 1FR 1FR; Grid-Template-Columns: 1FR 1FR 1FR }
 #controls:Not(:Checked)~.CONTROL{ Display: None }
 #leftcontrol{ Grid-Row: 2 / Span 3; Grid-Column: 1 / Span 1 }
 #rightcontrol{ Grid-Row: 2 / Span 3; Grid-Column: 3 / Span 1 }
 #bottomcontrol{ Grid-Row: 4 / Span 1; Grid-Column: 2 / Span 1; Grid-Template-Rows: 0 1FR 0 }
+main>jelli2-surface{ Grid-Column: 2 / Span 1 }
 .CONTROL>jelli2-key:Nth-Child(1){ Grid-Row: 1 / Span 1; Grid-Column: 2 / Span 1 }
 .CONTROL>jelli2-key:Nth-Child(2),#bottomcontrol>jelli2-key:First-Child{ Grid-Row: 2 / Span 1; Grid-Column: 1 / Span 1 }
 .CONTROL>jelli2-key:Nth-Child(3),#bottomcontrol>jelli2-key:Last-Child{ Grid-Row: 2 / Span 1; Grid-Column: 3 / Span 1 }
 .CONTROL>jelli2-key:Nth-Child(4){ Grid-Row: 3 / Span 1; Grid-Column: 2 / Span 1 }
+jelli2-key{ Block-Size: 1.5EM; Inline-Size: 1.5EM; Overflow: Hidden; Background: 0 0 / 600% URL(Images/ctrl.png); Image-Rendering: OptimizeSpeed }
+#key\.UP{ Background-Position: 0 -100% }
+#key\.UP[active]{ Background-Position: 0 -400% }
+#key\.LF{ Background-Position: -200% -100% }
+#key\.LF[active]{ Background-Position: -200% -400% }
+#key\.RT{ Background-Position: -300% -100% }
+#key\.RT[active]{ Background-Position: -300% -400% }
+#key\.DN{ Background-Position: -100% -100% }
+#key\.DN[active]{ Background-Position: -100% -400% }
+#key\.VW{ Background-Position: -300% 0 }
+#key\.VW[active]{ Background-Position: -300% -300% }
+#key\.MU{ Background-Position: -200% 0}
+#key\.MU[active]{ Background-Position: -200% -300% }
+#key\.OK{ Background-Position: -500% 0 }
+#key\.OK[active]{ Background-Position: -500% -300% }
+#key\.NO{ Background-Position: -400% 0 }
+#key\.NO[active]{ Background-Position: -400% -300% }
+#key\.GO{ Background-Position: 0 0 }
+#key\.GO[active]{ Background-Position: 0 -300% }
+#key\.ND{ Background-Position: -100% 0 }
+#key\.ND[active]{ Background-Position: -100% -300% }
+jelli2-key::part(button){ Visibility: Hidden ! Important }
 </STYLE>
 <SCRIPT Src=./index.mjs Type=module></SCRIPT>
 <MAIN>
@@ -32,13 +58,13 @@ main>label{ Grid-Row: 1 / Span 1; Grid-Column: 1 / Span 3; Text-Align: Center }
 		<JELLI2-KEY Codes="ArrowDown KeyK" ID=key.DN Label="Down Arrow">⬇️</JELLI2-KEY>
 	</dIv>
 	<DiV ID=rightcontrol Class=CONTROL>
-		<JELLI2-KEY Codes="KeyS Semicolon" ID=key.TR Label="Triangle">🔺</JELLI2-KEY>
-		<JELLI2-KEY Codes="KeyA KeyH" ID=key.SQ Label="Square">🟥</JELLI2-KEY>
+		<JELLI2-KEY Codes="KeyS Semicolon" ID=key.VW Label="Triangle">🔺</JELLI2-KEY>
+		<JELLI2-KEY Codes="KeyA KeyH" ID=key.MU Label="Square">🟥</JELLI2-KEY>
 		<JELLI2-KEY Codes="KeyX KeyO" ID=key.OK Label="OK">⭕️</JELLI2-KEY>
 		<JELLI2-KEY Codes="KeyZ KeyU" ID=key.NO Label="Cancel">❌</JELLI2-KEY>
 	</dIv>
 	<DIV ID=bottomcontrol Class=CONTROL>
-		<JELLI2-KEY Codes="KeyQ Space" ID=key.GO Label="Start">▶️</JELLI2-KEY>
+		<JELLI2-KEY Codes="KeyQ Enter" ID=key.GO Label="Start">▶️</JELLI2-KEY>
 		<JELLI2-KEY Codes="KeyW Backquote" ID=key.ND Label="End">⏹</JELLI2-KEY>
 	</DIV>
 </MAIN>
