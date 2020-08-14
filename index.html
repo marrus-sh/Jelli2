@@ -1,0 +1,44 @@
+<!dOcTyPe HTML>
+<HTML Lang=en>
+<TITLE>Jelli Demo</TITLE>
+<STYLE>
+main{ Display: Grid; Margin: Auto; Max-Width: Max-Content; Grid-Template-Rows: Max-Content Auto Auto Max-Content; Grid-Template-Columns: Max-Content Auto Max-Content; Gap: 1EM }
+main>input{ Display: None }
+main>label{ Grid-Row: 1 / Span 1; Grid-Column: 1 / Span 3; Text-Align: Center }
+#controls+label::after{ Content: " 🙅" }
+#controls:Checked+label::after{ Content: " 🙆" }
+.CONTROL{ Display: Grid; Margin: Auto; Block-Size: Max-Content; Inline-Size: Max-Content; Grid-Template-Rows: 1FR 1FR 1FR; Grid-Template-Columns: 1FR 1FR 1FR }
+#controls:Not(:Checked)~.CONTROL{ Display: None }
+#leftcontrol{ Grid-Row: 2 / Span 3; Grid-Column: 1 / Span 1 }
+#rightcontrol{ Grid-Row: 2 / Span 3; Grid-Column: 3 / Span 1 }
+#bottomcontrol{ Grid-Row: 4 / Span 1; Grid-Column: 2 / Span 1; Grid-Template-Rows: 0 1FR 0 }
+.CONTROL>jelli2-key:Nth-Child(1){ Grid-Row: 1 / Span 1; Grid-Column: 2 / Span 1 }
+.CONTROL>jelli2-key:Nth-Child(2),#bottomcontrol>jelli2-key:First-Child{ Grid-Row: 2 / Span 1; Grid-Column: 1 / Span 1 }
+.CONTROL>jelli2-key:Nth-Child(3),#bottomcontrol>jelli2-key:Last-Child{ Grid-Row: 2 / Span 1; Grid-Column: 3 / Span 1 }
+.CONTROL>jelli2-key:Nth-Child(4){ Grid-Row: 3 / Span 1; Grid-Column: 2 / Span 1 }
+</STYLE>
+<SCRIPT Src=./index.mjs Type=module></SCRIPT>
+<MAIN>
+	<INPUT Type=checkbox Id=controls>
+	<LABEL For=controls TabIndex=0>Show controls</LABEL>
+	<JELLI2-SURFACE ID=topsurface>
+	</JELLI2-SURFACE>
+	<JELLI2-SURFACE ID=bottomsurface>
+	</JELLI2-SURFACE>
+	<DiV ID=leftcontrol Class=CONTROL>
+		<JELLI2-KEY Codes="ArrowUp KeyI" ID=key.UP Label="Up Arrow">⬆️</JELLI2-KEY>
+		<JELLI2-KEY Codes="ArrowLeft KeyJ" ID=key.LF Label="Left Arrow">⬅️</JELLI2-KEY>
+		<JELLI2-KEY Codes="ArrowRight KeyL" ID=key.RT Label="Right Arrow">➡️</JELLI2-KEY>
+		<JELLI2-KEY Codes="ArrowDown KeyK" ID=key.DN Label="Down Arrow">⬇️</JELLI2-KEY>
+	</dIv>
+	<DiV ID=rightcontrol Class=CONTROL>
+		<JELLI2-KEY Codes="KeyS Semicolon" ID=key.TR Label="Triangle">🔺</JELLI2-KEY>
+		<JELLI2-KEY Codes="KeyA KeyH" ID=key.SQ Label="Square">🟥</JELLI2-KEY>
+		<JELLI2-KEY Codes="KeyX KeyO" ID=key.OK Label="OK">⭕️</JELLI2-KEY>
+		<JELLI2-KEY Codes="KeyZ KeyU" ID=key.NO Label="Cancel">❌</JELLI2-KEY>
+	</dIv>
+	<DIV ID=bottomcontrol Class=CONTROL>
+		<JELLI2-KEY Codes="KeyQ Space" ID=key.GO Label="Start">▶️</JELLI2-KEY>
+		<JELLI2-KEY Codes="KeyW Backquote" ID=key.ND Label="End">⏹</JELLI2-KEY>
+	</DIV>
+</MAIN>
